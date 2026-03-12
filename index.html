@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Truco Brasileiro - Aprenda e Jogue!</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- ========== TELA INICIAL ========== -->
+    <div id="tela-inicio" class="tela ativa">
+        <div class="container-inicio">
+            <div class="logo-truco">
+                <h1>🃏 TRUCO!</h1>
+                <p class="subtitulo">O Jogo de Cartas Mais Brasileiro do Mundo</p>
+                <p class="frase-efeito">"Quem não sabe blefar, não sabe viver!"</p>
+            </div>
+
+            <div class="menu-principal">
+                <button class="btn-menu btn-tutorial" onclick="iniciarTutorial()">
+                    📚 Tutorial - Aprenda a Jogar
+                    <span class="btn-desc">Nunca jogou? Começa por aqui, parceiro!</span>
+                </button>
+                <button class="btn-menu btn-jogar" onclick="mostrarNiveis()">
+                    🎮 Jogar Partida
+                    <span class="btn-desc">Bora meter bronca na mesa!</span>
+                </button>
+                <button class="btn-menu btn-regras" onclick="mostrarRegras()">
+                    📖 Regras & Dicas
+                    <span class="btn-desc">Cola aqui pra não passar vergonha</span>
+                </button>
+            </div>
+
+            <div class="rodape-inicio">
+                <p>Feito com ❤️ e muito café brasileiro ☕</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TELA DE SELEÇÃO DE NÍVEL ========== -->
+    <div id="tela-niveis" class="tela">
+        <div class="container-niveis">
+            <h2>⚡ Escolha seu Nível</h2>
+            <p class="subtitulo-nivel">Qual é a sua vibe, parceiro?</p>
+
+            <div class="grid-niveis">
+                <div class="card-nivel nivel-iniciante" onclick="iniciarJogo('iniciante')">
+                    <div class="nivel-icone">🐣</div>
+                    <h3>Iniciante</h3>
+                    <p class="nivel-apelido">"Pintinho na Mesa"</p>
+                    <ul>
+                        <li>IA joga de forma simples</li>
+                        <li>Dicas aparecem durante o jogo</li>
+                        <li>Perfeito pra quem tá começando</li>
+                        <li>A IA quase nunca blefa</li>
+                    </ul>
+                    <div class="nivel-estrelas">⭐</div>
+                </div>
+
+                <div class="card-nivel nivel-medio" onclick="iniciarJogo('medio')">
+                    <div class="nivel-icone">🐔</div>
+                    <h3>Intermediário</h3>
+                    <p class="nivel-apelido">"Já Sabe Bater Asa"</p>
+                    <ul>
+                        <li>IA com estratégias variadas</li>
+                        <li>Blefes ocasionais</li>
+                        <li>Dicas reduzidas</li>
+                        <li>Precisa pensar mais</li>
+                    </ul>
+                    <div class="nivel-estrelas">⭐⭐</div>
+                </div>
+
+                <div class="card-nivel nivel-avancado" onclick="iniciarJogo('avancado')">
+                    <div class="nivel-icone">🦅</div>
+                    <h3>Avançado</h3>
+                    <p class="nivel-apelido">"Águia da Mesa"</p>
+                    <ul>
+                        <li>IA agressiva e esperta</li>
+                        <li>Blefa com frequência</li>
+                        <li>Sem dicas automáticas</li>
+                        <li>Vai ter que suar!</li>
+                    </ul>
+                    <div class="nivel-estrelas">⭐⭐⭐</div>
+                </div>
+
+                <div class="card-nivel nivel-lenda" onclick="iniciarJogo('lenda')">
+                    <div class="nivel-icone">👑</div>
+                    <h3>Lenda do Truco</h3>
+                    <p class="nivel-apelido">"Rei do Boteco"</p>
+                    <ul>
+                        <li>IA praticamente imbatível</li>
+                        <li>Lê suas jogadas</li>
+                        <li>Blefa na cara dura</li>
+                        <li>Só os brabo aguentam!</li>
+                    </ul>
+                    <div class="nivel-estrelas">⭐⭐⭐⭐</div>
+                </div>
+            </div>
+
+            <button class="btn-voltar" onclick="voltarInicio()">← Voltar pro Início</button>
+        </div>
+    </div>
+
+    <!-- ========== TELA DO TUTORIAL ========== -->
+    <div id="tela-tutorial" class="tela">
+        <div class="container-tutorial">
+            <div class="tutorial-header">
+                <h2>📚 Tutorial de Truco</h2>
+                <div class="tutorial-progresso">
+                    <div class="barra-progresso">
+                        <div id="progresso-fill" class="progresso-fill"></div>
+                    </div>
+                    <span id="progresso-texto">Passo 1 de 10</span>
+                </div>
+            </div>
+
+            <div id="tutorial-conteudo" class="tutorial-conteudo">
+                <!-- Conteúdo dinâmico do tutorial -->
+            </div>
+
+            <div class="tutorial-navegacao">
+                <button id="btn-tutorial-anterior" class="btn-tutorial-nav" onclick="tutorialAnterior()">← Anterior</button>
+                <button id="btn-tutorial-pular" class="btn-tutorial-pular" onclick="voltarInicio()">Pular Tutorial</button>
+                <button id="btn-tutorial-proximo" class="btn-tutorial-nav btn-proximo" onclick="tutorialProximo()">Próximo →</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========== TELA DE REGRAS E DICAS ========== -->
+    <div id="tela-regras" class="tela">
+        <div class="container-regras">
+            <h2>📖 Regras & Dicas do Truco</h2>
+
+            <div class="tabs-regras">
+                <button class="tab-btn ativa" onclick="trocarTab('regras-basicas')">Regras Básicas</button>
+                <button class="tab-btn" onclick="trocarTab('manilhas')">Manilhas</button>
+                <button class="tab-btn" onclick="trocarTab('trucando')">Trucando</button>
+                <button class="tab-btn" onclick="trocarTab('dicas')">Dicas de Mestre</button>
+            </div>
+
+            <div id="tab-regras-basicas" class="tab-conteudo ativa">
+                <div class="regra-card">
+                    <h3>🎯 Objetivo do Jogo</h3>
+                    <p>O Truco é um jogo de cartas para 2 jogadores (ou 4, em duplas). O objetivo é fazer <strong>12 pontos</strong> antes do adversário. Cada rodada vale pontos, e você pode aumentar a aposta gritando <strong>"TRUCO!"</strong></p>
+                </div>
+                <div class="regra-card">
+                    <h3>🃏 O Baralho</h3>
+                    <p>Usa-se um baralho de 40 cartas (sem 8, 9, 10 e coringas). Cada jogador recebe <strong>3 cartas</strong> por rodada. Uma carta é virada na mesa para definir a <strong>manilha</strong> (a carta mais forte da rodada).</p>
+                </div>
+                <div class="regra-card">
+                    <h3>📊 Ordem das Cartas (da mais fraca pra mais forte)</h3>
+                    <p>4 → 5 → 6 → 7 → Q (Dama) → J (Valete) → K (Rei) → A (Ás) → 2 → 3</p>
+                    <p><em>Mas calma! As <strong>manilhas</strong> são mais fortes que todas essas!</em></p>
+                </div>
+                <div class="regra-card">
+                    <h3>🏆 Como Ganhar uma Rodada</h3>
+                    <p>A rodada tem até <strong>3 turnos</strong>. Quem ganhar <strong>2 dos 3 turnos</strong> leva a rodada. Em cada turno, cada jogador joga uma carta, e a carta mais forte vence o turno.</p>
+                    <p><strong>Empate no primeiro turno?</strong> Quem ganhar o segundo leva a rodada inteira!</p>
+                </div>
+            </div>
+
+            <div id="tab-manilhas" class="tab-conteudo">
+                <div class="regra-card">
+                    <h3>💪 O que são Manilhas?</h3>
+                    <p>As manilhas são as 4 cartas mais fortes da rodada. Elas são definidas pela carta virada na mesa (chamada de <strong>"vira"</strong>). As manilhas são as cartas com o <strong>valor seguinte</strong> ao da carta virada.</p>
+                    <p><em>Exemplo: Se a vira é um 5, as manilhas são todos os 6!</em></p>
+                </div>
+                <div class="regra-card">
+                    <h3>👑 Ordem das Manilhas (do mais fraco pro mais forte)</h3>
+                    <div class="manilhas-ordem">
+                        <div class="manilha-item">
+                            <span class="naipe ouros">♦</span>
+                            <span>Ouros (Pica-Fumo)</span>
+                        </div>
+                        <div class="manilha-item">
+                            <span class="naipe espadas">♠</span>
+                            <span>Espadas (Espadilha)</span>
+                        </div>
+                        <div class="manilha-item">
+                            <span class="naipe copas">♥</span>
+                            <span>Copas (Copeta/Sangue)</span>
+                        </div>
+                        <div class="manilha-item">
+                            <span class="naipe paus">♣</span>
+                            <span>Paus (Zap) - A MAIS FORTE!</span>
+                        </div>
+                    </div>
+                    <p class="dica-humor">💡 <em>"Zap na mão é igual dinheiro no bolso: te dá confiança!"</em></p>
+                </div>
+            </div>
+
+            <div id="tab-trucando" class="tab-conteudo">
+                <div class="regra-card">
+                    <h3>📢 Pedindo Truco</h3>
+                    <p>A qualquer momento durante a rodada, você pode gritar <strong>"TRUCO!"</strong> para aumentar o valor da rodada:</p>
+                    <div class="tabela-pontos">
+                        <div class="ponto-linha"><span>Normal:</span> <strong>1 ponto</strong></div>
+                        <div class="ponto-linha"><span>Truco:</span> <strong>3 pontos</strong></div>
+                        <div class="ponto-linha"><span>Seis (retruco):</span> <strong>6 pontos</strong></div>
+                        <div class="ponto-linha"><span>Nove:</span> <strong>9 pontos</strong></div>
+                        <div class="ponto-linha"><span>Doze (mão de ferro):</span> <strong>12 pontos</strong></div>
+                    </div>
+                </div>
+                <div class="regra-card">
+                    <h3>🤔 Quando Trucam Você</h3>
+                    <p>Quando o adversário pede truco, você tem 3 opções:</p>
+                    <ul>
+                        <li><strong>Aceitar:</strong> A rodada continua valendo mais pontos</li>
+                        <li><strong>Correr:</strong> Você desiste e o adversário ganha os pontos atuais</li>
+                        <li><strong>Aumentar:</strong> Você aumenta ainda mais a aposta!</li>
+                    </ul>
+                    <p class="dica-humor">💡 <em>"Correr não é covardia, é estratégia... às vezes!"</em></p>
+                </div>
+            </div>
+
+            <div id="tab-dicas" class="tab-conteudo">
+                <div class="regra-card dica-mestre">
+                    <h3>🧠 Dica #1 - Saiba Blefar</h3>
+                    <p>Truco é 50% cartas e 50% psicologia. Às vezes, um bom blefe vale mais que um Zap na mão. Peça truco com confiança, mesmo com cartas ruins!</p>
+                    <p class="dica-humor"><em>"No truco, cara de paisagem vale ouro!"</em></p>
+                </div>
+                <div class="regra-card dica-mestre">
+                    <h3>🧠 Dica #2 - Guarde sua Melhor Carta</h3>
+                    <p>Não jogue sua carta mais forte no primeiro turno (a não ser que precise). Guardar a melhor carta pro final pode ser a diferença entre ganhar e perder.</p>
+                    <p class="dica-humor"><em>"Quem mostra tudo no começo, fica pelado no final!"</em></p>
+                </div>
+                <div class="regra-card dica-mestre">
+                    <h3>🧠 Dica #3 - Preste Atenção nas Manilhas</h3>
+                    <p>Sempre olhe a carta virada e conte as manilhas. Se você tem 2 manilhas, é quase certo que vai ganhar a rodada. Se não tem nenhuma, cuidado!</p>
+                    <p class="dica-humor"><em>"Quem não conta manilha, conta prejuízo!"</em></p>
+                </div>
+                <div class="regra-card dica-mestre">
+                    <h3>🧠 Dica #4 - Saiba a Hora de Correr</h3>
+                    <p>Se suas cartas são ruins e o adversário pediu truco, não tenha vergonha de correr. Perder 1 ponto é melhor que perder 3, 6 ou mais!</p>
+                    <p class="dica-humor"><em>"Herói de truco é aquele que chega nos 12, não o que perde bonito!"</em></p>
+                </div>
+                <div class="regra-card dica-mestre">
+                    <h3>🧠 Dica #5 - Observe o Adversário</h3>
+                    <p>Preste atenção no padrão do adversário. Ele sempre pede truco com cartas boas? Ou ele é blefeiro? Conhecer o estilo dele te dá vantagem!</p>
+                    <p class="dica-humor"><em>"No truco, o melhor jogador não é o que tem as melhores cartas, é o que lê melhor o adversário!"</em></p>
+                </div>
+            </div>
+
+            <button class="btn-voltar" onclick="voltarInicio()">← Voltar pro Início</button>
+        </div>
+    </div>
+
+    <!-- ========== TELA DO JOGO ========== -->
+    <div id="tela-jogo" class="tela">
+        <div class="jogo-container">
+            <!-- Placar -->
+            <div class="placar">
+                <div class="placar-jogador">
+                    <span class="placar-nome">🧑 Você</span>
+                    <span id="placar-jogador" class="placar-pontos">0</span>
+                </div>
+                <div class="placar-vs">
+                    <span>VS</span>
+                    <div class="valor-rodada">
+                        <span>Rodada vale: </span>
+                        <span id="valor-rodada" class="valor-pontos">1</span>
+                    </div>
+                </div>
+                <div class="placar-adversario">
+                    <span id="placar-adversario" class="placar-pontos">0</span>
+                    <span class="placar-nome">🤖 <span id="nome-adversario">Adversário</span></span>
+                </div>
+            </div>
+
+            <!-- Indicador de turnos ganhos -->
+            <div class="turnos-indicador">
+                <div class="turno-dots jogador-dots">
+                    <span id="turno-j1" class="turno-dot"></span>
+                    <span id="turno-j2" class="turno-dot"></span>
+                    <span id="turno-j3" class="turno-dot"></span>
+                </div>
+                <span class="turnos-label">Turnos</span>
+                <div class="turno-dots adversario-dots">
+                    <span id="turno-a1" class="turno-dot"></span>
+                    <span id="turno-a2" class="turno-dot"></span>
+                    <span id="turno-a3" class="turno-dot"></span>
+                </div>
+            </div>
+
+            <!-- Carta Virada (Vira) -->
+            <div class="vira-container">
+                <span class="vira-label">Vira:</span>
+                <div id="carta-vira" class="carta carta-vira"></div>
+                <span id="manilha-info" class="manilha-info"></span>
+            </div>
+
+            <!-- Mão do Adversário -->
+            <div class="mao-adversario">
+                <div id="cartas-adversario" class="cartas-mao">
+                    <!-- Cartas viradas do adversário -->
+                </div>
+            </div>
+
+            <!-- Mesa (cartas jogadas) -->
+            <div class="mesa">
+                <div id="carta-mesa-adversario" class="slot-mesa">
+                    <!-- Carta jogada pelo adversário -->
+                </div>
+                <div id="carta-mesa-jogador" class="slot-mesa">
+                    <!-- Carta jogada pelo jogador -->
+                </div>
+            </div>
+
+            <!-- Mão do Jogador -->
+            <div class="mao-jogador">
+                <div id="cartas-jogador" class="cartas-mao">
+                    <!-- Cartas do jogador -->
+                </div>
+            </div>
+
+            <!-- Botões de Ação -->
+            <div class="acoes-jogo">
+                <button id="btn-truco" class="btn-acao btn-truco" onclick="pedirTruco()">
+                    📢 TRUCO!
+                </button>
+                <button id="btn-esconder" class="btn-acao btn-esconder" onclick="jogarEscondida()">
+                    🙈 Jogar Escondida
+                </button>
+            </div>
+
+            <!-- Modal de Truco -->
+            <div id="modal-truco" class="modal-truco escondido">
+                <div class="modal-conteudo">
+                    <div id="modal-truco-texto" class="modal-texto"></div>
+                    <div id="modal-truco-botoes" class="modal-botoes">
+                        <!-- Botões dinâmicos -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Balão de Fala -->
+            <div id="balao-fala" class="balao-fala escondido">
+                <p id="balao-texto"></p>
+            </div>
+
+            <!-- Dica do jogo -->
+            <div id="dica-jogo" class="dica-jogo escondido">
+                <span class="dica-icone">💡</span>
+                <p id="dica-texto"></p>
+                <button class="btn-fechar-dica" onclick="fecharDica()">✕</button>
+            </div>
+
+            <!-- Mensagem de resultado do turno -->
+            <div id="resultado-turno" class="resultado-turno escondido">
+                <p id="resultado-turno-texto"></p>
+            </div>
+
+            <button class="btn-voltar btn-voltar-jogo" onclick="confirmarSaida()">← Sair</button>
+        </div>
+    </div>
+
+    <!-- ========== MODAL DE FIM DE JOGO ========== -->
+    <div id="modal-fim" class="modal-overlay escondido">
+        <div class="modal-fim-conteudo">
+            <div id="fim-icone" class="fim-icone"></div>
+            <h2 id="fim-titulo"></h2>
+            <p id="fim-mensagem"></p>
+            <div id="fim-placar" class="fim-placar"></div>
+            <div class="fim-botoes">
+                <button class="btn-menu btn-jogar" onclick="jogarNovamente()">🔄 Jogar Novamente</button>
+                <button class="btn-menu btn-regras" onclick="voltarInicio()">🏠 Menu Principal</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/cartas.js"></script>
+    <script src="js/tutorial.js"></script>
+    <script src="js/ia.js"></script>
+    <script src="js/jogo.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

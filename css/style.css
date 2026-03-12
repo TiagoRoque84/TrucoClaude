@@ -1,0 +1,1200 @@
+/* ========== RESET E BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --verde-mesa: #1a6b3c;
+    --verde-escuro: #0d4a25;
+    --verde-claro: #2d8f55;
+    --amarelo: #f5c518;
+    --amarelo-escuro: #d4a810;
+    --azul: #1a3a6b;
+    --azul-claro: #2d5faa;
+    --vermelho: #c0392b;
+    --vermelho-claro: #e74c3c;
+    --branco: #f5f0e8;
+    --creme: #faf3e0;
+    --marrom: #5d4037;
+    --dourado: #d4a843;
+    --sombra: rgba(0, 0, 0, 0.3);
+    --sombra-forte: rgba(0, 0, 0, 0.5);
+}
+
+body {
+    font-family: 'Nunito', sans-serif;
+    background: var(--verde-escuro);
+    color: var(--branco);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* ========== TELAS ========== */
+.tela {
+    display: none;
+    min-height: 100vh;
+    animation: fadeIn 0.4s ease;
+}
+
+.tela.ativa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== TELA INICIAL ========== */
+.container-inicio {
+    text-align: center;
+    padding: 2rem;
+    max-width: 600px;
+    width: 100%;
+}
+
+.logo-truco h1 {
+    font-family: 'Bangers', cursive;
+    font-size: 5rem;
+    color: var(--amarelo);
+    text-shadow: 4px 4px 0 var(--marrom), 6px 6px 10px var(--sombra-forte);
+    letter-spacing: 8px;
+    margin-bottom: 0.2rem;
+    animation: pulsar 2s ease-in-out infinite;
+}
+
+@keyframes pulsar {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.03); }
+}
+
+.subtitulo {
+    font-size: 1.2rem;
+    color: var(--creme);
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+}
+
+.frase-efeito {
+    font-style: italic;
+    color: var(--amarelo-escuro);
+    font-size: 1rem;
+    margin-bottom: 2.5rem;
+    opacity: 0.9;
+}
+
+.menu-principal {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.btn-menu {
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 12px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-menu:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px var(--sombra);
+}
+
+.btn-menu:active {
+    transform: translateY(0);
+}
+
+.btn-desc {
+    font-size: 0.8rem;
+    font-weight: 400;
+    opacity: 0.8;
+    margin-top: 0.2rem;
+}
+
+.btn-tutorial {
+    background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+    color: var(--branco);
+}
+
+.btn-jogar {
+    background: linear-gradient(135deg, var(--verde-mesa), var(--verde-claro));
+    color: var(--branco);
+}
+
+.btn-regras {
+    background: linear-gradient(135deg, var(--marrom), #8d6e63);
+    color: var(--branco);
+}
+
+.rodape-inicio {
+    margin-top: 2rem;
+    opacity: 0.6;
+    font-size: 0.85rem;
+}
+
+/* ========== TELA DE NÍVEIS ========== */
+.container-niveis {
+    padding: 2rem;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+}
+
+.container-niveis h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    color: var(--amarelo);
+    text-shadow: 2px 2px 0 var(--marrom);
+    margin-bottom: 0.3rem;
+}
+
+.subtitulo-nivel {
+    color: var(--creme);
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+.grid-niveis {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.card-nivel {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.15);
+    border-radius: 16px;
+    padding: 1.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+}
+
+.card-nivel:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px var(--sombra);
+}
+
+.nivel-icone {
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-nivel h3 {
+    font-size: 1.3rem;
+    color: var(--amarelo);
+    margin-bottom: 0.2rem;
+}
+
+.nivel-apelido {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--amarelo-escuro);
+    margin-bottom: 0.8rem;
+}
+
+.card-nivel ul {
+    list-style: none;
+    text-align: left;
+    font-size: 0.85rem;
+    margin-bottom: 0.8rem;
+}
+
+.card-nivel ul li {
+    padding: 0.2rem 0;
+    padding-left: 1.2rem;
+    position: relative;
+}
+
+.card-nivel ul li::before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--amarelo);
+}
+
+.nivel-estrelas {
+    font-size: 1.2rem;
+}
+
+.nivel-iniciante:hover { border-color: #4caf50; background: rgba(76, 175, 80, 0.2); }
+.nivel-medio:hover { border-color: #ff9800; background: rgba(255, 152, 0, 0.2); }
+.nivel-avancado:hover { border-color: #f44336; background: rgba(244, 67, 54, 0.2); }
+.nivel-lenda:hover { border-color: var(--dourado); background: rgba(212, 168, 67, 0.2); }
+
+/* ========== BOTÃO VOLTAR ========== */
+.btn-voltar {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--branco);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.7rem 1.5rem;
+    border-radius: 8px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-voltar:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* ========== TUTORIAL ========== */
+.container-tutorial {
+    padding: 2rem;
+    max-width: 750px;
+    width: 100%;
+}
+
+.tutorial-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tutorial-header h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 2.2rem;
+    color: var(--amarelo);
+    text-shadow: 2px 2px 0 var(--marrom);
+    margin-bottom: 1rem;
+}
+
+.barra-progresso {
+    width: 100%;
+    height: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 0.5rem;
+}
+
+.progresso-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--amarelo), var(--dourado));
+    border-radius: 4px;
+    transition: width 0.5s ease;
+    width: 10%;
+}
+
+#progresso-texto {
+    font-size: 0.85rem;
+    color: var(--creme);
+    opacity: 0.8;
+}
+
+.tutorial-conteudo {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 16px;
+    padding: 2rem;
+    min-height: 350px;
+    margin-bottom: 1.5rem;
+}
+
+.tutorial-conteudo h3 {
+    font-size: 1.5rem;
+    color: var(--amarelo);
+    margin-bottom: 1rem;
+}
+
+.tutorial-conteudo p {
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.tutorial-conteudo .destaque {
+    background: rgba(245, 197, 24, 0.15);
+    border-left: 4px solid var(--amarelo);
+    padding: 0.8rem 1rem;
+    border-radius: 0 8px 8px 0;
+    margin: 1rem 0;
+}
+
+.tutorial-conteudo .exemplo-cartas {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+    margin: 1.2rem 0;
+    flex-wrap: wrap;
+}
+
+.tutorial-conteudo .mini-carta {
+    background: white;
+    color: #333;
+    width: 55px;
+    height: 80px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 2px 8px var(--sombra);
+    border: 2px solid #ddd;
+}
+
+.tutorial-conteudo .mini-carta.manilha {
+    border-color: var(--amarelo);
+    box-shadow: 0 0 15px rgba(245, 197, 24, 0.5);
+    animation: brilhoManilha 1.5s ease-in-out infinite;
+}
+
+@keyframes brilhoManilha {
+    0%, 100% { box-shadow: 0 0 10px rgba(245, 197, 24, 0.3); }
+    50% { box-shadow: 0 0 25px rgba(245, 197, 24, 0.7); }
+}
+
+.tutorial-conteudo .humor {
+    font-style: italic;
+    color: var(--amarelo-escuro);
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 0.95rem;
+}
+
+.tutorial-navegacao {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+}
+
+.btn-tutorial-nav {
+    padding: 0.8rem 1.8rem;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--branco);
+}
+
+.btn-tutorial-nav:hover {
+    background: rgba(255, 255, 255, 0.25);
+    transform: translateY(-2px);
+}
+
+.btn-proximo {
+    background: linear-gradient(135deg, var(--amarelo-escuro), var(--amarelo));
+    color: var(--marrom);
+}
+
+.btn-proximo:hover {
+    background: linear-gradient(135deg, var(--amarelo), var(--dourado));
+}
+
+.btn-tutorial-pular {
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.9rem;
+    text-decoration: underline;
+}
+
+.btn-tutorial-pular:hover {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ========== REGRAS ========== */
+.container-regras {
+    padding: 2rem;
+    max-width: 800px;
+    width: 100%;
+}
+
+.container-regras h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    color: var(--amarelo);
+    text-shadow: 2px 2px 0 var(--marrom);
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.tabs-regras {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.tab-btn {
+    padding: 0.6rem 1.2rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--creme);
+    font-family: 'Nunito', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.tab-btn.ativa {
+    background: var(--amarelo);
+    color: var(--marrom);
+    border-color: var(--amarelo);
+}
+
+.tab-btn:hover:not(.ativa) {
+    background: rgba(255, 255, 255, 0.18);
+}
+
+.tab-conteudo {
+    display: none;
+}
+
+.tab-conteudo.ativa {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.regra-card {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.regra-card h3 {
+    color: var(--amarelo);
+    margin-bottom: 0.6rem;
+    font-size: 1.15rem;
+}
+
+.regra-card p {
+    line-height: 1.6;
+    font-size: 0.95rem;
+    margin-bottom: 0.4rem;
+}
+
+.regra-card ul {
+    padding-left: 1.5rem;
+    margin-top: 0.5rem;
+}
+
+.regra-card ul li {
+    margin-bottom: 0.3rem;
+    line-height: 1.5;
+}
+
+.dica-humor {
+    color: var(--amarelo-escuro);
+    font-size: 0.9rem;
+    margin-top: 0.5rem;
+}
+
+.manilhas-ordem {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin: 0.8rem 0;
+}
+
+.manilha-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.naipe {
+    font-size: 1.5rem;
+    width: 30px;
+    text-align: center;
+}
+
+.naipe.ouros { color: #ff6b6b; }
+.naipe.espadas { color: #74b9ff; }
+.naipe.copas { color: #ff6b6b; }
+.naipe.paus { color: #2d3436; background: var(--branco); border-radius: 50%; width: 30px; height: 30px; line-height: 30px; }
+
+.tabela-pontos {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    margin-top: 0.8rem;
+}
+
+.ponto-linha {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.4rem 0.8rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 6px;
+}
+
+.dica-mestre {
+    border-left: 4px solid var(--amarelo);
+}
+
+/* ========== TELA DO JOGO ========== */
+.jogo-container {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 1rem;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    background:
+        radial-gradient(ellipse at center, var(--verde-mesa) 0%, var(--verde-escuro) 100%);
+    border-left: 3px solid var(--marrom);
+    border-right: 3px solid var(--marrom);
+}
+
+/* Placar */
+.placar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 0.6rem 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+.placar-jogador, .placar-adversario {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.placar-nome {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.placar-pontos {
+    font-family: 'Bangers', cursive;
+    font-size: 2rem;
+    color: var(--amarelo);
+    text-shadow: 1px 1px 0 var(--marrom);
+}
+
+.placar-vs {
+    text-align: center;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.valor-rodada {
+    margin-top: 0.2rem;
+}
+
+.valor-pontos {
+    color: var(--amarelo);
+    font-weight: 800;
+    font-size: 1.1rem;
+}
+
+/* Turnos Indicador */
+.turnos-indicador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.turno-dots {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.turno-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s;
+}
+
+.turno-dot.ganho {
+    background: var(--amarelo);
+    border-color: var(--amarelo);
+    box-shadow: 0 0 8px rgba(245, 197, 24, 0.5);
+}
+
+.turno-dot.perdido {
+    background: var(--vermelho);
+    border-color: var(--vermelho);
+}
+
+.turno-dot.empate {
+    background: #aaa;
+    border-color: #aaa;
+}
+
+.turnos-label {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Vira */
+.vira-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    margin-bottom: 0.5rem;
+}
+
+.vira-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    opacity: 0.8;
+}
+
+.manilha-info {
+    font-size: 0.8rem;
+    color: var(--amarelo);
+    font-weight: 600;
+}
+
+/* Cartas */
+.carta {
+    width: 70px;
+    height: 100px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    position: relative;
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.carta-frente {
+    background: white;
+    color: #333;
+    border: 2px solid #ccc;
+    box-shadow: 0 2px 8px var(--sombra);
+}
+
+.carta-vermelha {
+    color: #c0392b;
+}
+
+.carta-preta {
+    color: #2c3e50;
+}
+
+.carta-valor {
+    font-size: 1.3rem;
+    line-height: 1;
+}
+
+.carta-naipe {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.carta-manilha {
+    border-color: var(--amarelo) !important;
+    box-shadow: 0 0 15px rgba(245, 197, 24, 0.4) !important;
+}
+
+.carta-manilha::after {
+    content: '⭐';
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    font-size: 0.9rem;
+}
+
+.carta-costas {
+    background: linear-gradient(135deg, var(--azul), var(--azul-claro));
+    border: 2px solid var(--azul);
+    box-shadow: 0 2px 8px var(--sombra);
+    color: white;
+    font-size: 1.8rem;
+}
+
+.carta-costas::after {
+    content: '🃏';
+    font-size: 2rem;
+}
+
+.carta-vira {
+    width: 55px;
+    height: 78px;
+    font-size: 0.9rem;
+}
+
+.carta-vira .carta-valor {
+    font-size: 1rem;
+}
+
+.carta-vira .carta-naipe {
+    font-size: 1.2rem;
+}
+
+/* Mãos */
+.mao-adversario, .mao-jogador {
+    display: flex;
+    justify-content: center;
+    padding: 0.3rem 0;
+}
+
+.cartas-mao {
+    display: flex;
+    gap: 0.8rem;
+    justify-content: center;
+}
+
+.mao-jogador .carta {
+    cursor: pointer;
+}
+
+.mao-jogador .carta:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 8px 20px var(--sombra);
+}
+
+/* Mesa */
+.mesa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3rem;
+    padding: 1.5rem 0;
+    min-height: 130px;
+    position: relative;
+}
+
+.mesa::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 120px;
+    border: 2px dashed rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+}
+
+.slot-mesa {
+    width: 70px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Ações */
+.acoes-jogo {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+}
+
+.btn-acao {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-truco {
+    background: linear-gradient(135deg, var(--vermelho), var(--vermelho-claro));
+    color: white;
+    font-size: 1.1rem;
+    animation: pulsarBotao 2s ease-in-out infinite;
+}
+
+@keyframes pulsarBotao {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.4); }
+    50% { box-shadow: 0 0 0 8px rgba(231, 76, 60, 0); }
+}
+
+.btn-truco:hover {
+    transform: scale(1.05);
+}
+
+.btn-truco:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    animation: none;
+}
+
+.btn-esconder {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--branco);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.btn-esconder:hover {
+    background: rgba(255, 255, 255, 0.22);
+}
+
+/* Modal Truco */
+.modal-truco {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-conteudo {
+    background: linear-gradient(135deg, var(--verde-escuro), var(--verde-mesa));
+    border: 3px solid var(--amarelo);
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 20px 60px var(--sombra-forte);
+}
+
+.modal-texto {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+}
+
+.modal-texto .truco-grito {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    color: var(--amarelo);
+    display: block;
+    margin: 0.5rem 0;
+    text-shadow: 2px 2px 0 var(--marrom);
+    animation: sacudir 0.5s ease-in-out;
+}
+
+@keyframes sacudir {
+    0%, 100% { transform: rotate(0); }
+    25% { transform: rotate(-5deg); }
+    75% { transform: rotate(5deg); }
+}
+
+.modal-botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.modal-botoes .btn-aceitar {
+    background: linear-gradient(135deg, var(--verde-claro), #27ae60);
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-botoes .btn-correr {
+    background: rgba(255, 255, 255, 0.12);
+    color: var(--branco);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-botoes .btn-aumentar {
+    background: linear-gradient(135deg, var(--vermelho), var(--vermelho-claro));
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 10px;
+    font-family: 'Nunito', sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.modal-botoes button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px var(--sombra);
+}
+
+/* Balão de Fala */
+.balao-fala {
+    position: fixed;
+    top: 15%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: #333;
+    padding: 0.8rem 1.5rem;
+    border-radius: 15px;
+    font-weight: 600;
+    font-size: 1rem;
+    box-shadow: 0 4px 15px var(--sombra);
+    z-index: 50;
+    animation: aparecer 0.4s ease;
+    max-width: 300px;
+    text-align: center;
+}
+
+.balao-fala::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid white;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+/* Dica do jogo */
+.dica-jogo {
+    position: fixed;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, var(--amarelo-escuro), var(--amarelo));
+    color: var(--marrom);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 15px var(--sombra);
+    z-index: 50;
+    max-width: 500px;
+    animation: slideUp 0.4s ease;
+    font-size: 0.9rem;
+}
+
+@keyframes slideUp {
+    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+    to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.dica-icone {
+    font-size: 1.3rem;
+    flex-shrink: 0;
+}
+
+.btn-fechar-dica {
+    background: none;
+    border: none;
+    color: var(--marrom);
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0 0.3rem;
+    opacity: 0.6;
+    flex-shrink: 0;
+}
+
+.btn-fechar-dica:hover {
+    opacity: 1;
+}
+
+/* Resultado turno */
+.resultado-turno {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 1rem 2rem;
+    border-radius: 15px;
+    font-size: 1.3rem;
+    font-weight: 700;
+    z-index: 60;
+    text-align: center;
+    animation: popIn 0.4s ease;
+}
+
+@keyframes popIn {
+    from { opacity: 0; transform: translate(-50%, -50%) scale(0.7); }
+    to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+}
+
+/* Modal Fim de Jogo */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 200;
+    animation: fadeIn 0.5s ease;
+}
+
+.modal-fim-conteudo {
+    background: linear-gradient(135deg, var(--verde-escuro), var(--verde-mesa));
+    border: 3px solid var(--amarelo);
+    border-radius: 20px;
+    padding: 2.5rem;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    box-shadow: 0 20px 60px var(--sombra-forte);
+}
+
+.fim-icone {
+    font-size: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+.modal-fim-conteudo h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 2.5rem;
+    color: var(--amarelo);
+    text-shadow: 2px 2px 0 var(--marrom);
+    margin-bottom: 0.5rem;
+}
+
+.modal-fim-conteudo p {
+    font-size: 1.05rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+}
+
+.fim-placar {
+    font-family: 'Bangers', cursive;
+    font-size: 1.8rem;
+    color: var(--amarelo);
+    margin-bottom: 1.5rem;
+}
+
+.fim-botoes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.fim-botoes .btn-menu {
+    text-align: center;
+    justify-content: center;
+}
+
+/* ========== UTILIDADES ========== */
+.escondido {
+    display: none !important;
+}
+
+.btn-voltar-jogo {
+    position: absolute;
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    z-index: 10;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 600px) {
+    .logo-truco h1 {
+        font-size: 3.5rem;
+    }
+
+    .grid-niveis {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .carta {
+        width: 58px;
+        height: 84px;
+    }
+
+    .carta-valor {
+        font-size: 1.1rem;
+    }
+
+    .carta-naipe {
+        font-size: 1.2rem;
+    }
+
+    .mesa {
+        gap: 1.5rem;
+        padding: 1rem 0;
+    }
+
+    .tutorial-conteudo {
+        padding: 1.2rem;
+    }
+
+    .acoes-jogo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-regras, .container-tutorial, .container-niveis, .container-inicio {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 400px) {
+    .grid-niveis {
+        grid-template-columns: 1fr;
+    }
+
+    .cartas-mao {
+        gap: 0.4rem;
+    }
+
+    .carta {
+        width: 50px;
+        height: 72px;
+    }
+}
