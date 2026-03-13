@@ -980,6 +980,7 @@ body {
     animation: aparecer 0.4s ease;
     max-width: 300px;
     text-align: center;
+    pointer-events: none;
 }
 
 .balao-fala::after {
@@ -1057,6 +1058,7 @@ body {
     font-weight: 700;
     z-index: 60;
     text-align: center;
+    pointer-events: none;
     animation: popIn 0.4s ease;
 }
 

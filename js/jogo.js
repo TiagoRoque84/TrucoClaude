@@ -95,6 +95,8 @@ function iniciarRodada() {
         setTimeout(() => adversarioJoga(), 1200);
     } else {
         estadoJogo.podeJogar = true;
+        renderizarMaoJogador();
+        atualizarBotoes();
     }
 
     // Mostrar fala da IA no início
