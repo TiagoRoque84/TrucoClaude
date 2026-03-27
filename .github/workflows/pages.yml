@@ -2,7 +2,8 @@ name: Deploy to GitHub Pages
 
 on:
   push:
-    branches: ["claude/truco-game-tutorial-eI4KX"]
+    # Deploy from main or from the default content branch (no main exists yet)
+    branches: ["main", "claude/truco-game-tutorial-eI4KX"]
   workflow_dispatch:
 
 permissions:
